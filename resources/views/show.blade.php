@@ -138,4 +138,32 @@
   </div>
 </div>
 {{-- End Section Cast --}}
+
+{{-- Start Media Cast --}}
+<div class="media border-b border-gray-800">
+  <div class="container mx-auto px-4 py-16">
+    <h2 class="text-4xl font-semibold">Media</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
+      <div class="mt-8">
+        <img src="/img/image-1.jpg" alt="" class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
+      </div>
+      <div class="mt-8">
+        <img src="/img/image-2.jpg" alt="" class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
+      </div>
+      <div class="mt-8">
+        <img src="/img/image-3.jpg" alt="" class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
+      </div>
+      <div class="mt-1">
+        <img src="/img/image-4.jpg" alt="" class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
+      </div>
+      <div class="mt-1">
+        <img src="/img/image-5.jpg" alt="" class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
+      </div>
+      <div class="mt-1">
+        <img src="/img/image-6.jpg" alt="" class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
+      </div>
+    </div>
+  </div>
+</div>
+{{-- End Section Cast --}}
 @endsection
