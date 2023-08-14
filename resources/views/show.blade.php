@@ -43,13 +43,15 @@
 
       {{-- Start Featured Cast --}}
       <div class="mt-10">
-        <h4 class="text-white font-semibold">Featured Cast</h4>
+        <h4 class="text-white font-semibold">Featured Crew</h4>
         <div class="flex mt-4">
           @foreach ($movie['credits']['crew'] as $crew)
           @if ($loop->index < 5) <div class="mr-8">
             <div>{{ $crew['name'] }}</div>
             <div class="text-sm text-gray-400">{{ $crew['job'] }}</div>
         </div>
+        @else
+        @break
         @endif
         @endforeach
       </div>
@@ -117,6 +119,8 @@
           </div>
         </div>
     </div>
+    @else
+    @break
     @endif
     @endforeach
   </div>
@@ -139,6 +143,8 @@
             class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
         </a>
     </div>
+    @else
+    @break
     @endif
     @endforeach
   </div>
