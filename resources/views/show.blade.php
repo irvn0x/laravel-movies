@@ -3,25 +3,22 @@
 @section('content')
 <div class="movie-info border-b border-gray-800">
   <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
-    <img src="{{ 'https://image.tmdb.org/t/p/w500/'.$movie['poster_path'] }}" alt="oppenheimer"
-      class="md:w-96 rounded-lg">
+    <img src="{{ $movie['poster_path'] }}" alt="oppenheimer" class="md:w-96 rounded-lg">
     <div class="md:ml-24">
-      <h2 class="text-4xl font-semibold">{{ $movie['title'] }} (2023)</h2>
+      <h2 class="text-4xl font-semibold">{{ $movie['title'] }}</h2>
       <div class="flex items-center text-gray-400 text-sm mt-1">
         <span class="bg-teal-200 rounded-full px-2 font-semibold tracking-wide text-black">13+</span>
         <span class="mx-2">•</span>
         <span>⭐</span>
-        <span class="ml-1">{{ $movie['vote_average'] * 10 .'%' }}</span>
+        <span class="ml-1">{{ $movie['vote_average'] }}</span>
         <span class="mx-2">•</span>
-        <span>{{ \Carbon\Carbon::parse($movie['release_date'])->format('M d, Y') }}</span>
+        <span>{{ $movie['release_date'] }}</span>
         <span class="mx-2">•</span>
         <span>
           @foreach ($movie['genres'] as $genre)
           {{ $genre['name'] }} @if (!$loop->last), @endif
           @endforeach
         </span>
-        <span class="mx-2">•</span>
-        <span>3h 1m</span>
       </div>
 
       {{-- Start Tagline --}}
