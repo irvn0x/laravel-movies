@@ -22,6 +22,8 @@ class MovieViewModel extends ViewModel
             'release_date'  => Carbon::parse($this->movie['release_date'])->format('M d, Y'),
             'genres'        => collect($this->movie['genres'])->pluck('name')->flatten()->implode(', '),
             'crew'          => collect($this->movie['credits']['crew'])->take(5),
-        ])->dump();
+            'cast'          => collect($this->movie['credits']['cast'])->take(10),
+            'images'        => collect($this->movie['images']['backdrops'])->take(9),
+        ]);
     }
 }

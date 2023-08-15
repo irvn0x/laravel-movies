@@ -98,8 +98,8 @@
   <div class="container mx-auto px-4 py-16">
     <h2 class="text-4xl font-semibold">Top Billed Cast</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-      @foreach ($movie['credits']['cast'] as $cast)
-      @if ($loop->index < 10) <div class="mt-8">
+      @foreach ($movie['cast'] as $cast)
+      <div class="mt-8">
         <img src="{{ 'https://image.tmdb.org/t/p/w300/'.$cast['profile_path'] }}" alt="actor"
           class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
         <div class="mt-2">
@@ -110,13 +110,10 @@
             </div>
           </div>
         </div>
+      </div>
+      @endforeach
     </div>
-    @else
-    @break
-    @endif
-    @endforeach
   </div>
-</div>
 </div>
 {{-- End Section Cast --}}
 
@@ -125,8 +122,8 @@
   <div class="container mx-auto px-4 py-16">
     <h2 class="text-4xl font-semibold">Media</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
-      @foreach ($movie['images']['backdrops'] as $image)
-      @if ($loop->index < 9) <div class="mt-8">
+      @foreach ($movie['images'] as $image)
+      <div class="mt-8">
         <a @click.prevent="
         isOpen = true, 
         image = '{{ 'https://image.tmdb.org/t/p/original/'.$image['file_path'] }}'
@@ -134,32 +131,29 @@
           <img src="{{ 'https://image.tmdb.org/t/p/w500/'.$image['file_path'] }}" alt="image"
             class="rounded-lg hover:opacity-75 transition ease-in-out duration-150">
         </a>
+      </div>
+      @endforeach
     </div>
-    @else
-    @break
-    @endif
-    @endforeach
-  </div>
 
-  {{-- Start Modal Button --}}
-  <div style="background-color: rgba(0, 0, 0, .5);"
-    class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto"
-    x-show.transition.opacity="isOpen">
-    <div class="container mx-auto lg:px-32 rounded-lg overflow-y-auto">
-      <div class="bg-gray-900 rounded">
-        <div class="flex justify-end pr-4 pt-2">
-          <button @click="isOpen = false" @keydown.escape.window="isOpen = false"
-            class="text-3xl leading-none hover:text-gray-300">&times;</button>
-        </div>
-        <div class="modal-body px-8 py-8">
-          <img :src="image" alt="poster">
+    {{-- Start Modal Button --}}
+    <div style="background-color: rgba(0, 0, 0, .5);"
+      class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto"
+      x-show.transition.opacity="isOpen">
+      <div class="container mx-auto lg:px-32 rounded-lg overflow-y-auto">
+        <div class="bg-gray-900 rounded">
+          <div class="flex justify-end pr-4 pt-2">
+            <button @click="isOpen = false" @keydown.escape.window="isOpen = false"
+              class="text-3xl leading-none hover:text-gray-300">&times;</button>
+          </div>
+          <div class="modal-body px-8 py-8">
+            <img :src="image" alt="poster">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  {{-- End Modal Button --}}
+    {{-- End Modal Button --}}
 
-</div>
+  </div>
 </div>
 {{-- End Section Cast --}}
 @endsection
