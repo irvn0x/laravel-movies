@@ -21,5 +21,31 @@
     </div>
   </div>
   {{-- End Popular Actors --}}
+  {{-- Start Search --}}
+  <div class="flex justify-between mt-16">
+    @if ($previous)
+    <a href="/actors/page/{{ $previous }}">Previous</a>
+    @else
+    <div></div>
+    @endif
+
+    @if ($next)
+    <a href="/actors/page/{{ $next }}">Next</a>
+    @else
+    <div></div>
+    @endif
+  </div>
 </div>
 @endsection
+
+{{-- @section('scripts')
+<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+<script>
+  var elem = document.querySelector('.grid');
+  var infScroll = new InfiniteScroll(elem, {
+    path: '/actors/page/@{{ # }}',
+    append: '.actor',
+    // history: false 
+  });
+</script>
+@endsection --}}
