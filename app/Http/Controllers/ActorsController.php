@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ViewModels\ActorsViewModel;
+use App\ViewModels\ActorViewModel;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
@@ -53,7 +54,13 @@ class ActorsController extends Controller
      */
     public function show($id)
     {
-        return view('actors.show');
+        $actor = Http::withToken(config('services.tmdb.token'))
+            ->get('https://api.themoviedb.org/3/person/' . $id)
+            ->json();
+
+        $viewModel = new ActorViewModel($actor);
+
+        return view('actors.show', $viewModel);
     }
 
     /**
