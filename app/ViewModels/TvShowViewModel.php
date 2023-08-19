@@ -17,13 +17,13 @@ class TvShowViewModel extends ViewModel
     public function tvshow()
     {
         return collect($this->tvshow)->merge([
-            'poster_path'   => 'https://image.tmdb.org/t/p/w500/' . $this->tvshow['poster_path'],
-            'vote_average'  => $this->tvshow['vote_average'] * 10 . '%',
-            'first_air_date'  => Carbon::parse($this->tvshow['first_air_date'])->format('M d, Y'),
-            'genres'        => collect($this->tvshow['genres'])->pluck('name')->flatten()->implode(', '),
-            'crew'          => collect($this->tvshow['credits']['crew'])->take(5),
-            'cast'          => collect($this->tvshow['credits']['cast'])->take(10),
-            'images'        => collect($this->tvshow['images']['backdrops'])->take(9),
+            'poster_path'       => 'https://image.tmdb.org/t/p/w500/' . $this->tvshow['poster_path'],
+            'vote_average'      => $this->tvshow['vote_average'] * 10 . '%',
+            'first_air_date'    => Carbon::parse($this->tvshow['first_air_date'])->format('M d, Y'),
+            'genres'            => collect($this->tvshow['genres'])->pluck('name')->flatten()->implode(', '),
+            'crew'              => collect($this->tvshow['credits']['crew'])->take(5),
+            'cast'              => collect($this->tvshow['credits']['cast'])->take(10),
+            'images'            => collect($this->tvshow['images']['backdrops'])->take(9),
         ]);
     }
 }
