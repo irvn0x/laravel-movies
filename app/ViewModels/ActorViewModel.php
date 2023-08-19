@@ -3,6 +3,7 @@
 namespace App\ViewModels;
 
 use Spatie\ViewModels\ViewModel;
+use Carbon\Carbon;
 
 class ActorViewModel extends ViewModel
 {
@@ -23,7 +24,7 @@ class ActorViewModel extends ViewModel
             'profile_path' => $this->actor['profile_path']
                 ? 'https://image.tmdb.org/t/p/w300/' . $this->actor['profile_path']
                 : 'https://via.placeholder.com/300x450',
-        ])->dump();
+        ]);
     }
 
     public function social()
@@ -32,7 +33,7 @@ class ActorViewModel extends ViewModel
             'twitter' => $this->social['twitter_id'] ? 'https://twitter.com/' . $this->social['twitter_id'] : null,
             'facebook' => $this->social['facebook_id'] ? 'https://facebook.com/' . $this->social['facebook_id'] : null,
             'instagram' => $this->social['instagram_id'] ? 'https://instagram.com/' . $this->social['instagram_id'] : null,
-        ])->dump();
+        ]);
     }
 
     public function knownForMovies()
@@ -46,6 +47,37 @@ class ActorViewModel extends ViewModel
                     : 'https://via.placeholder.com/185x278',
                 'title' => isset($movie['title']) ? $movie['title'] : 'Untitled'
             ]);
-        })->dump();
+        });
+    }
+
+    public function credits()
+    {
+        $castMovies = collect($this->credits)->get('cast');
+
+        return collect($castMovies)->map(function ($movie) {
+
+            if (isset($movie['release_date'])) {
+                $releaseDate = $movie['release_date'];
+            } elseif (isset($movie['release_air_date'])) {
+                $releaseDate = $movie['release_air_date'];
+            } else {
+                $releaseDate = '';
+            }
+
+            if (isset($movie['title'])) {
+                $title = $movie['title'];
+            } elseif (isset($movie['name'])) {
+                $title = $movie['name'];
+            } else {
+                $title = 'Untitled';
+            }
+
+            return collect($movie)->merge([
+                'release_date'  => $releaseDate,
+                'release_year'  => isset($releaseDate) ? Carbon::parse($releaseDate)->format('Y') : 'Future',
+                'title'         => $title,
+                'character'     => isset($movie['character']) ? $movie['character'] : '',
+            ]);
+        })->sortByDesc('release_date');
     }
 }

@@ -55,7 +55,7 @@
       <div class="mt-10">
         <h4 class="text-white font-semibold">Biography</h4>
         <div class="flex mt-4">
-          <p class="text-gray-300 lg:text-justify">
+          <p class="text-gray-300 text-left lg:text-justify">
             {{ $actor['biography'] }}
           </p>
         </div>
@@ -90,21 +90,10 @@
   <div class="container mx-auto px-4 py-16">
     <h2 class="text-4xl font-semibold">Credits</h2>
     <ul class="list-disc leading-loose pl-5 mt-8">
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-      <li>2020 &middot; <strong>The Meg</strong> as Jason/Statman</li>
-
+      @foreach ($credits as $credit)
+      <li>{{ $credit['release_year'] }} &middot; <strong>{{ $credit['title'] }}</strong> as {{ $credit['character'] }}
+      </li>
+      @endforeach
     </ul>
   </div>
 </div>
