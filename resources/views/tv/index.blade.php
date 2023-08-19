@@ -6,9 +6,9 @@
   <div class="popular-tv">
     <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold">Popular Tv Shows</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-      {{-- @foreach ($popularMovies as $movie)
-      <x-movie-card :movie="$movie" :genres="$genres" />
-      @endforeach --}}
+      @foreach ($popularTv as $tvshow)
+      <x-tv-card :tvshow="$tvshow" />
+      @endforeach
     </div>
   </div>
   {{-- End Popular TV Shows --}}
@@ -17,9 +17,9 @@
   <div class="popular-movies py-24">
     <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold">Top Rated TV Shows</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-      {{-- @foreach ($nowPlayingMovies as $movie)
-      <x-movie-card :movie="$movie" />
-      @endforeach --}}
+      @foreach ($topRatedTv as $tvshow)
+      <x-tv-card :tvshow="$tvshow" />
+      @endforeach
     </div>
   </div>
   {{-- End - Top Rated TV Shows --}}
